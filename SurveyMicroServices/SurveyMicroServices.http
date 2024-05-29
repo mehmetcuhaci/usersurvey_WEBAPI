@@ -1,0 +1,6 @@
+@SurveyMicroServices_HostAddress = http://localhost:5091
+
+GET {{SurveyMicroServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
