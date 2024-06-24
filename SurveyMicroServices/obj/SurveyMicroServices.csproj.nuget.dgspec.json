@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mehme\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mehme\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mehme\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
         "projectName": "SurveyMicroServices",
-        "projectPath": "C:\\Users\\mehme\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
-        "packagesPath": "C:\\Users\\mehme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mehme\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\obj\\",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mehme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +56,7 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -65,7 +66,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -91,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
