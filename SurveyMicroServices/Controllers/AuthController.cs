@@ -29,30 +29,33 @@ namespace SurveyMicroServices.Controllers
             };
 
             IdentityResult result=await userManager.CreateAsync(appUser,request.Password);
+
+            var token = await userManager.GenerateEmailConfirmationTokenAsync(appUser);
+
+
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors.Select(s=> s.Description));
             }
-            return NoContent();
-
+            return StatusCode(200, $"Kayıt Başarılı \n" + token);
         }
 
         [HttpPost]
         public async Task <IActionResult> ChangePassword(ChangePasswordDto request,CancellationToken cancellationToken)
         {
-            AppUser? appUser = await userManager.FindByIdAsync(request.Id.ToString());
+            AppUser? appUser = await userManager.FindByEmailAsync(request.email);
             if (appUser == null)
             {
                 return BadRequest(new { Message = "Kullanıcı bulunamadı!" });
             }
-            IdentityResult result =await userManager.ChangePasswordAsync(appUser, request.CurrentPassowrd, request.NewPassword);
+            IdentityResult result =await userManager.ChangePasswordAsync(appUser, request.currentPassword, request.newPassword);
 
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors.Select(s => s.Description));
             }
 
-            return NoContent();
+            return StatusCode(200,"sifre basariyla degisti");
 
         }
 
@@ -127,6 +130,25 @@ namespace SurveyMicroServices.Controllers
             return Ok(new { Token = "Token" });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ConfirmEmail(string token,string email)
+        {
+            var user=await userManager.FindByEmailAsync(email);
+            if (user is null)
+            {
+                return StatusCode(500, "Hatalı Mail");
+            }
+            
+            IdentityResult result=await userManager.ConfirmEmailAsync(user,token);
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors.Select(s => s.Description));
+            }
+            
+            return StatusCode(200, "Mail Doğrulama Başarılı");
 
+
+
+        }
     }
 }

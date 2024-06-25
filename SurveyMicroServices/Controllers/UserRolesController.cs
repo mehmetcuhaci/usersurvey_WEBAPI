@@ -10,7 +10,7 @@ namespace SurveyMicroServices.Controllers
     public class UserRolesController(ApplicationDbContext context,UserManager<AppUser> userManager) : ControllerBase
     {
         [HttpGet]
-        public async Task<IActionResult> Create(Guid userId, string roleName, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(string mail, string roleName, CancellationToken cancellationToken)
         {
             //AppUserRole appUserRole = new()
             //{
@@ -22,7 +22,7 @@ namespace SurveyMicroServices.Controllers
 
             //await context.SaveChangesAsync(cancellationToken);
 
-            AppUser? appUser = await userManager.FindByIdAsync(userId.ToString());
+            AppUser? appUser = await userManager.FindByEmailAsync(mail);
             if (appUser == null)
             {
                 return StatusCode(500, "Kullanıcı bulunamadı!");

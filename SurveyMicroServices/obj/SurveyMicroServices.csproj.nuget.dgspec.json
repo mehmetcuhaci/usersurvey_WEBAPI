@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {}
+    "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\SurveyMicroServices.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj": {
+    "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\SurveyMicroServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
+        "projectUniqueName": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\SurveyMicroServices.csproj",
         "projectName": "SurveyMicroServices",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\SurveyMicroServices.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\SurveyMicroServices\\SurveyMicroServices\\obj\\",
+        "projectPath": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\SurveyMicroServices.csproj",
+        "packagesPath": "C:\\Users\\Ayberk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ayberk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
