@@ -127,7 +127,15 @@ namespace SurveyMicroServices.Controllers
                 return StatusCode(500, "Mail adresi onaylı değil!"); 
             }
 
-            return Ok(new { Token = "Token" });
+            var loginRole =await userManager.GetRolesAsync(appUser);
+            string roleString = string.Join(",", loginRole);
+
+            if (loginRole.Contains("Admin"))
+            {
+                return Ok($"{roleString} giris yapti");
+            }
+
+            return StatusCode(200,"Succesful Login");
         }
 
         [HttpPost]

@@ -11,7 +11,12 @@ namespace SurveyMicroServices
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+
         }
+
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Option> Options { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -21,6 +26,7 @@ namespace SurveyMicroServices
             builder.Ignore<IdentityUserToken<Guid>>();
             builder.Ignore<IdentityUserClaim<Guid>>();
             builder.Ignore<IdentityRoleClaim<Guid>>();
+
         }
     }
 }
