@@ -115,6 +115,10 @@ namespace SurveyMicroServices.Controllers
 
             SignInResult result = await signInManager.CheckPasswordSignInAsync(appUser, request.Password, true);
 
+            if (result.IsNotAllowed)
+            {
+                return StatusCode(500, "Mail adresi onaylı değil!");
+            }
 
             if (!result.Succeeded)
             {
@@ -122,17 +126,23 @@ namespace SurveyMicroServices.Controllers
             }
 
 
-            if (result.IsNotAllowed)
-            {
-                return StatusCode(500, "Mail adresi onaylı değil!"); 
-            }
+            
 
             var loginRole =await userManager.GetRolesAsync(appUser);
             string roleString = string.Join(",", loginRole);
 
             if (loginRole.Contains("Admin"))
             {
-                return Ok($"{roleString} giris yapti");
+                var response = new
+                {
+                    role=roleString,
+                    userId=appUser.Id,
+                    Message=$"{roleString} giris yapti"
+
+                };
+
+                return Ok(response);
+                //return Ok($"{roleString} giris yapti");
             }
 
             return StatusCode(200,"Succesful Login");
