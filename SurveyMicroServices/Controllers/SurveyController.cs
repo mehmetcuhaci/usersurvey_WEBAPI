@@ -10,41 +10,50 @@ namespace SurveyMicroServices.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class SurveyController(ApplicationDbContext applicationDbContext, UserManager<AppUser> userManager) : ControllerBase
+    public class SurveyController : ControllerBase
     {
+
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
+        public SurveyController(ApplicationDbContext context, UserManager<AppUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
+
         [HttpPost]
 
-        public async Task<ActionResult<Survey>> CreateSurvey([FromBody]Survey survey,string userId)
+        public async Task<ActionResult<Survey>> CreateSurvey([FromBody]Survey survey /*string userId*/)
         {
             //var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null) { 
+            //if (userId == null) { 
             
-            return Unauthorized();
+            //return Unauthorized();
             
-            }
+            //}
 
-            var user = await userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound("Kullanici bulunamadi");
+            //var user = await userManager.FindByIdAsync(userId);
+            //if (user == null)
+            //{
+            //    return NotFound("Kullanici bulunamadi");
 
-            }
+            //}
             survey.CreatedAt = DateTime.UtcNow;
-            survey.CreatedBy = user.Id; 
+            //survey.CreatedBy = user.Id; 
 
             foreach (var question in survey.Questions)
             {
-                applicationDbContext.Questions.Add(question);
+                _context.Questions.Add(question);
                 foreach (var option in question.Options)
                 {
-                    applicationDbContext.Options.Add(option);
+                    _context.Options.Add(option);
                 }
             }
 
-            applicationDbContext.Surveys.Add(survey);
+            _context.Surveys.Add(survey);
             try
             {
-                await applicationDbContext.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
             }
             catch (DbUpdateException ex)
@@ -53,11 +62,18 @@ namespace SurveyMicroServices.Controllers
                 
             }
 
-            return Ok();
+            return StatusCode(200,"Anket basariyla olusturuldu.");
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> GetSurveyTitle()
+        {
+            var surveys=  await _context.Surveys.Select(s => s.Title).ToListAsync();
 
+            return Ok(surveys);
+
+        }
 
 
     }
