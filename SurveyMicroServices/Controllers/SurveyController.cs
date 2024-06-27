@@ -75,6 +75,29 @@ namespace SurveyMicroServices.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> TitleByCode(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                return BadRequest("Başlık ismi girmek zorunlu!");
+            }
 
+            var matchingSurveys= await _context.Surveys
+                .Where(s=> s.Title.Contains(title))
+                .Select(s=> new SurveyDto
+                {
+                    SurveyId=s.SurveyID,
+                    Title=s.Title,
+                })
+                .ToListAsync();
+
+            if (!matchingSurveys.Any())
+            {
+                return NotFound("Bu basliga uygun anket bulunamadi");
+            }
+
+            return Ok(matchingSurveys);
+        }
     }
 }
