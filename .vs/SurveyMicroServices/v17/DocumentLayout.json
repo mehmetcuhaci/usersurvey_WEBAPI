@@ -11,32 +11,20 @@
       "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\dtos\\surveydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\models\\surveymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\models\\surveymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\dtos\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\models\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\models\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|c:\\users\\ayberk\\source\\repos\\usersurvey_webapi\\surveymicroservices\\dtos\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A51F553C-6607-43B6-AF90-C8283F8545C7}|SurveyMicroServices\\SurveyMicroServices.csproj|solutionrelative:surveymicroservices\\dtos\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,67 +38,67 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "SurveyMicroServices\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\ApplicationDbContext.cs",
+              "RelativeToolTip": "SurveyMicroServices\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T11:01:10.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Response.cs",
+              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\Response.cs",
+              "RelativeDocumentMoniker": "SurveyMicroServices\\Models\\Response.cs",
+              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\Response.cs",
+              "RelativeToolTip": "SurveyMicroServices\\Models\\Response.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-28T11:00:09.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SurveyDto.cs",
               "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\SurveyDto.cs",
               "RelativeDocumentMoniker": "SurveyMicroServices\\Dtos\\SurveyDto.cs",
               "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\SurveyDto.cs",
               "RelativeToolTip": "SurveyMicroServices\\Dtos\\SurveyDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAuwBUAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T12:43:06.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RoleController.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\RoleController.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Controllers\\RoleController.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\RoleController.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Controllers\\RoleController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAYwAoAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T08:48:30.524Z",
+              "WhenOpened": "2024-06-28T10:20:15.043Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SurveyModel.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\SurveyModel.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Models\\SurveyModel.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\SurveyModel.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Models\\SurveyModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAdAAAA",
+              "Title": "UserResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\UserResponse.cs",
+              "RelativeDocumentMoniker": "SurveyMicroServices\\Models\\UserResponse.cs",
+              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Models\\UserResponse.cs",
+              "RelativeToolTip": "SurveyMicroServices\\Models\\UserResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T12:09:56.985Z",
+              "WhenOpened": "2024-06-28T10:06:07.927Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAGEAAAAAAAAA",
+              "Title": "ResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\ResponseDto.cs",
+              "RelativeDocumentMoniker": "SurveyMicroServices\\Dtos\\ResponseDto.cs",
+              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\ResponseDto.cs",
+              "RelativeToolTip": "SurveyMicroServices\\Dtos\\ResponseDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-21T08:28:26.681Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\ApplicationDbContext.cs",
-              "RelativeToolTip": "SurveyMicroServices\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T12:13:44.851Z",
+              "WhenOpened": "2024-06-28T10:03:49.558Z",
               "EditorCaption": ""
             },
             {
@@ -119,49 +107,11 @@
               "Title": "SurveyController.cs",
               "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\SurveyController.cs",
               "RelativeDocumentMoniker": "SurveyMicroServices\\Controllers\\SurveyController.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\SurveyController.cs*",
-              "RelativeToolTip": "SurveyMicroServices\\Controllers\\SurveyController.cs*",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAowBEAAABeAAAA",
+              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\SurveyController.cs",
+              "RelativeToolTip": "SurveyMicroServices\\Controllers\\SurveyController.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAA2wGYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T12:01:40.331Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Program.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Program.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Program.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Program.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T11:29:44.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ChangePasswordDto.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\ChangePasswordDto.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Dtos\\ChangePasswordDto.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Dtos\\ChangePasswordDto.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Dtos\\ChangePasswordDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T11:58:47.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserRolesController.cs",
-              "DocumentMoniker": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\UserRolesController.cs",
-              "RelativeDocumentMoniker": "SurveyMicroServices\\Controllers\\UserRolesController.cs",
-              "ToolTip": "C:\\Users\\Ayberk\\source\\repos\\usersurvey_WEBAPI\\SurveyMicroServices\\Controllers\\UserRolesController.cs",
-              "RelativeToolTip": "SurveyMicroServices\\Controllers\\UserRolesController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAIwBEAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-23T08:44:19.113Z",
+              "WhenOpened": "2024-06-28T08:22:35.278Z",
               "EditorCaption": ""
             }
           ]

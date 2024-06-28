@@ -9,6 +9,7 @@
         public DateTime? ExpiresAt { get; set; }
         public Guid CreatedBy { get; set; }
         public ICollection<Question> Questions { get; set; }
+        public ICollection<UserSurvey> UserSurveys { get; set; }
     }
 
     public class Question

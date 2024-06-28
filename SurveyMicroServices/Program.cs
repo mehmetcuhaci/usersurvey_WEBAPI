@@ -41,6 +41,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
 ).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 
+builder.Services.AddScoped<Survey>();
 
 
 

@@ -39,7 +39,7 @@ namespace SurveyMicroServices.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("SurveyMicroServices.Models.AppUser", b =>
@@ -100,7 +100,7 @@ namespace SurveyMicroServices.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("SurveyMicroServices.Models.AppUserRole", b =>
@@ -113,7 +113,7 @@ namespace SurveyMicroServices.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRoles", (string)null);
                 });
 #pragma warning restore 612, 618
         }

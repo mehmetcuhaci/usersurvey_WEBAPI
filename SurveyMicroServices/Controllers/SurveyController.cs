@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -99,5 +100,110 @@ namespace SurveyMicroServices.Controllers
 
             return Ok(matchingSurveys);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSurvey()
+        {
+            var surveys=await _context.Surveys
+                .Select(s=> new SurveyDto
+                {
+                    SurveyId=s.SurveyID,
+                    Title=s.Title,
+                    Questions=s.Questions.Select(q=>new QuestionDto
+                    {
+                        QuestionId=q.QuestionID,
+                        Text=q.Text,
+                        Options=q.Options.Select(o=>new OptionDto
+                        {
+                            OptionId=o.OptionID,
+                            Text = o.Text
+                        }).ToList()
+                    }).ToList()
+                })
+                .ToListAsync();
+
+            return Ok(surveys);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSurveyDetails(int surveyID)
+        {
+            var survey = await _context.Surveys
+                .Include(s => s.Questions)
+                .ThenInclude(q => q.Options)
+                .FirstOrDefaultAsync(s=>s.SurveyID==surveyID);
+
+
+            if (survey==null)
+            {
+                return NotFound("Anket bulunamadi");
+            }
+
+            var surveyDto = new SurveyDto
+            {
+                SurveyId = survey.SurveyID,
+                Title = survey.Title,
+                Questions = survey.Questions.Select(q => new QuestionDto
+                {
+                    QuestionId = q.QuestionID,
+                    Text = q.Text,
+                    Options = q.Options.Select(o => new OptionDto
+                    {
+                        OptionId = o.OptionID,
+                        Text = o.Text
+                    }).ToList()
+                }).ToList()
+            };
+            return Ok(surveyDto);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SubmitSurveyResponse(int surveyId, [FromBody] List<QuestionDto> answers)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+                return Unauthorized();
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound("Kullanıcı bulunamadı");
+
+            foreach (var answer in answers)
+            {
+                foreach (var option in answer.Options)
+                {
+                    if (option.OptionId != 0) // Check if OptionId is valid based on your requirements
+                    {
+                        var response = new Models.Response
+                        {
+                            SurveyID = surveyId,
+                            QuestionID = answer.QuestionId,
+                            OptionID = option.OptionId,
+                            UserID = userId,
+                            AnsweredAt = DateTime.UtcNow,
+                            AzureIntegration = false // Default value, adjust as needed
+                        };
+
+                        _context.Responses.Add(response);
+                    }
+                }
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+            return StatusCode(200, "Cevaplar başarıyla kaydedildi.");
+        }
+
+
+
+
     }
 }
