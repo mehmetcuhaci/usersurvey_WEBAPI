@@ -70,11 +70,10 @@ namespace SurveyMicroServices.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSurveyTitle()
         {
-            var surveys=  await _context.Surveys.Select(s => s.Title).ToListAsync();
-
+            var surveys = await _context.Surveys.Select(s => new { s.SurveyID, s.Title }).ToListAsync();
             return Ok(surveys);
-
         }
+
 
         [HttpGet]
         public async Task<IActionResult> TitleByCode(string title)
@@ -125,18 +124,17 @@ namespace SurveyMicroServices.Controllers
             return Ok(surveys);
         }
 
-        [HttpGet]
+        [HttpGet("{surveyID}")]
         public async Task<IActionResult> GetSurveyDetails(int surveyID)
         {
             var survey = await _context.Surveys
                 .Include(s => s.Questions)
                 .ThenInclude(q => q.Options)
-                .FirstOrDefaultAsync(s=>s.SurveyID==surveyID);
+                .FirstOrDefaultAsync(s => s.SurveyID == surveyID);
 
-
-            if (survey==null)
+            if (survey == null)
             {
-                return NotFound("Anket bulunamadi");
+                return NotFound("Anket bulunamadı");
             }
 
             var surveyDto = new SurveyDto
@@ -155,8 +153,8 @@ namespace SurveyMicroServices.Controllers
                 }).ToList()
             };
             return Ok(surveyDto);
-
         }
+
 
         [HttpPost]
         public async Task<IActionResult> SubmitSurveyResponse(int surveyId, [FromBody] List<QuestionDto> answers)
@@ -173,7 +171,7 @@ namespace SurveyMicroServices.Controllers
             {
                 foreach (var option in answer.Options)
                 {
-                    if (option.OptionId != 0) // Check if OptionId is valid based on your requirements
+                    if (option.OptionId != 0)
                     {
                         var response = new Models.Response
                         {
@@ -182,7 +180,7 @@ namespace SurveyMicroServices.Controllers
                             OptionID = option.OptionId,
                             UserID = userId,
                             AnsweredAt = DateTime.UtcNow,
-                            AzureIntegration = false // Default value, adjust as needed
+                            AzureIntegration = false
                         };
 
                         _context.Responses.Add(response);
@@ -201,6 +199,7 @@ namespace SurveyMicroServices.Controllers
 
             return StatusCode(200, "Cevaplar başarıyla kaydedildi.");
         }
+
 
 
 
