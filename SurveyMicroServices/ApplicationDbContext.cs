@@ -23,13 +23,26 @@ namespace SurveyMicroServices
         {
             base.OnModelCreating(builder);
 
+            // Set the primary key for AppUserRole
             builder.Entity<AppUserRole>().HasKey(x => new { x.UserId, x.RoleId });
 
-            builder.Ignore<IdentityUserLogin<Guid>>();
-            builder.Ignore<IdentityUserToken<Guid>>();
-            builder.Ignore<IdentityUserClaim<Guid>>();
-            builder.Ignore<IdentityRoleClaim<Guid>>();
+            // Map Identity tables to custom table names
+            builder.Entity<AppUser>(entity => {
+                entity.ToTable("Users");
+            });
 
+            builder.Entity<AppRole>(entity => {
+                entity.ToTable("Roles");
+            });
+
+            builder.Entity<IdentityUserRole<Guid>>(entity => {
+                entity.ToTable("UserRoles");
+                entity.HasKey(r => new { r.UserId, r.RoleId });
+            });
+
+           
+
+            // Custom mappings for UserSurvey
             builder.Entity<UserSurvey>()
                 .HasKey(us => new { us.UserId, us.SurveyID });
 
