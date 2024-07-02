@@ -51,10 +51,10 @@ namespace SurveyMicroServices
                 .WithMany(u => u.UserSurveys)
                 .HasForeignKey(us => us.UserId);
 
-            builder.Entity<UserSurvey>()
-                .HasOne(us => us.Survey)
-                .WithMany(s => s.UserSurveys)
-                .HasForeignKey(us => us.SurveyID);
+            //builder.Entity<UserSurvey>()
+            //    .HasOne(us => us.Survey)
+            //    .WithMany(s => s.UserSurveys)
+            //    .HasForeignKey(us => us.SurveyID);
         }
     }
 }

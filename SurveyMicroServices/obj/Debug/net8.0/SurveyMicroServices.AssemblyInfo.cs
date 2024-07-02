@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SurveyMicroServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5fe8bfb98025d597994454cc24ed14d1c685995")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a144550490fd1f3cae47d2226842bcaa46c200f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SurveyMicroServices")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SurveyMicroServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
