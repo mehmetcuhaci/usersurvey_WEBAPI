@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SurveyMicroServices.Dtos;
 using SurveyMicroServices.Models;
 using System.Security.Claims;
@@ -155,17 +156,15 @@ namespace SurveyMicroServices.Controllers
             return Ok(surveyDto);
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> SubmitSurveyResponse(int surveyId, [FromBody] List<QuestionDto> answers)
+        [HttpPost("{surveyId}")]
+        public async Task<IActionResult> SubmitSurveyResponse(int surveyId, [FromBody] List<QuestionDto> answers, [FromHeader] string userId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
                 return Unauthorized();
 
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
-                return NotFound("Kullanıcı bulunamadı");
+                return NotFound("User not found");
 
             foreach (var answer in answers)
             {
@@ -180,7 +179,7 @@ namespace SurveyMicroServices.Controllers
                             OptionID = option.OptionId,
                             UserID = userId,
                             AnsweredAt = DateTime.UtcNow,
-                            AzureIntegration = false
+                            //AzureIntegration = false
                         };
 
                         _context.Responses.Add(response);
@@ -197,10 +196,45 @@ namespace SurveyMicroServices.Controllers
                 return StatusCode(500, ex.Message);
             }
 
-            return StatusCode(200, "Cevaplar başarıyla kaydedildi.");
+            return StatusCode(200, "Responses saved successfully.");
         }
 
 
+
+
+        [HttpGet]
+        public async Task<IActionResult> UserSurveys(string userId)
+        {
+            if (userId is null)
+                return Unauthorized();
+            
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user is null)
+            {
+                return NotFound("Kullanici bulunamadi");
+            }
+
+            var surveyTitles = await _context.Responses
+                  .Where(r => r.UserID == userId)
+                  //Responses classında userid'yi doğruladı
+                  .Join(_context.Surveys, //Surveys tablosuna girdi
+                  response => response.SurveyID, //response içinden SurveyID aldı
+                  survey => survey.SurveyID, // Survey içinden surveyid aldı
+                  (response, survey) => new { survey.Title }) // ikisin birleştirip title'ı doğrulaadı
+                  .Select(s => s.Title)
+                  .Distinct()
+                  .ToListAsync();
+
+            if (surveyTitles == null || surveyTitles.Count == 0)
+            {
+                return NotFound("Kullanıcının katıldığı anket bulunamadı");
+            }
+
+            return Ok(surveyTitles);
+
+
+        }
 
 
 

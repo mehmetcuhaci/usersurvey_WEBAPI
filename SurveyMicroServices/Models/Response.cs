@@ -8,7 +8,7 @@
         public int OptionID { get; set; }
         public string UserID { get; set; }
         public DateTime AnsweredAt { get; set; }
-        public bool AzureIntegration { get; set; }
+       // public bool AzureIntegration { get; set; }
 
         // Optional: If you have navigation properties, you can define them here
         // public Survey Survey { get; set; }
