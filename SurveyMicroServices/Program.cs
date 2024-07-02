@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Quartz;
 using SurveyMicroServices;
 using SurveyMicroServices.Models;
+using Quartz.Impl;
+using Quartz.Spi;
+using SurveyMicroServices.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +47,20 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
 
 builder.Services.AddScoped<Survey>();
 
+builder.Services.AddQuartz(q =>
+{
+    q.UseMicrosoftDependencyInjectionJobFactory();
 
+    var jobKey = new JobKey("UpdateSurveyStatusJob");
+    q.AddJob<UpdateSurveyStatusJob>(opts=>opts.WithIdentity(jobKey));
+    q.AddTrigger(opts=>opts
+    .ForJob(jobKey)
+    .WithIdentity("UpdateSurveyStatusJob-trigger")
+    .WithSimpleSchedule(x=>x.WithIntervalInHours(1).RepeatForever()));
+});
+
+builder.Services.AddSingleton<IJobFactory, JobFactory>(); 
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
 
 var app = builder.Build();
