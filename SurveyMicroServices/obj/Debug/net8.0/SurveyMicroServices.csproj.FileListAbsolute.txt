@@ -497,3 +497,6 @@ C:\Users\Ayberk\Source\Repos\usersurvey_WEBAPI\SurveyMicroServices\obj\Debug\net
 C:\Users\Ayberk\Source\Repos\usersurvey_WEBAPI\SurveyMicroServices\obj\Debug\net8.0\SurveyMicroServices.genruntimeconfig.cache
 C:\Users\Ayberk\Source\Repos\usersurvey_WEBAPI\SurveyMicroServices\obj\Debug\net8.0\ref\SurveyMicroServices.dll
 C:\Users\Ayberk\source\repos\usersurvey_WEBAPI\SurveyMicroServices\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Ayberk\source\repos\usersurvey_WEBAPI\SurveyMicroServices\bin\Debug\net8.0\Quartz.dll
+C:\Users\Ayberk\source\repos\usersurvey_WEBAPI\SurveyMicroServices\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
+C:\Users\Ayberk\source\repos\usersurvey_WEBAPI\SurveyMicroServices\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll

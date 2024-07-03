@@ -8,7 +8,7 @@
         public DateTime CreatedAt { get; set; }
         public DateTime? ExpiresAt { get; set; }
         public Guid CreatedBy { get; set; }
-        public byte Status { get; set; }
+        public bool Status { get; set; }
         public ICollection<Question> Questions { get; set; }
         //public ICollection<UserSurvey> UserSurveys { get; set; }
     }

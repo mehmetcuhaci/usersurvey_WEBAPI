@@ -71,7 +71,10 @@ namespace SurveyMicroServices.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSurveyTitle()
         {
-            var surveys = await _context.Surveys.Select(s => new { s.SurveyID, s.Title }).ToListAsync();
+            var surveys = await _context.Surveys
+                .Where(s=>s.Status==true)
+                .Select(s => new { s.SurveyID, s.Title }).ToListAsync();
+            
             return Ok(surveys);
         }
 
@@ -105,6 +108,7 @@ namespace SurveyMicroServices.Controllers
         public async Task<IActionResult> GetSurvey()
         {
             var surveys=await _context.Surveys
+                .Where(s => s.Status == true)
                 .Select(s=> new SurveyDto
                 {
                     SurveyId=s.SurveyID,
@@ -236,6 +240,120 @@ namespace SurveyMicroServices.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeStatus(int surveyId)
+        {
+            var survey=await _context.Surveys.FindAsync(surveyId);
+
+            if (survey is null)
+            {
+                return NotFound("Anket bulunamadi");
+            }
+
+            survey.Status = false;
+            _context.Surveys.Update(survey);
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Anket durumu güncellendi");
+            
+
+
+        }
+
+        [HttpGet("UserResponses")]
+        public async Task<IActionResult> GetUserResponses(int surveyId, string userId)
+        {
+            var responses = await _context.Responses
+                .Include(r => r.Question)
+                    .ThenInclude(q => q.Options) // Include options related to the question
+                .Where(r => r.SurveyID == surveyId && r.UserID == userId)
+                .Select(r => new {
+                    QuestionId = r.QuestionID,
+                    QuestionText = r.Question.Text,
+                    Options = r.Question.Options.Select(o => new {
+                        OptionId = o.OptionID,
+                        OptionText = o.Text
+                    })
+                })
+                .ToListAsync();
+
+            var survey = await _context.Surveys
+                .Where(s => s.SurveyID == surveyId)
+                .Select(s => new {
+                    s.SurveyID,
+                    s.Title,
+                    s.Description
+                })
+                .FirstOrDefaultAsync();
+
+            if (survey == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new
+            {
+                survey.SurveyID,
+                survey.Title,
+                survey.Description,
+                Questions = responses
+            });
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetResponses()
+        {
+            var responses = await _context.Responses
+                .Select(r => new {
+                    r.ResponseID,
+                    r.SurveyID,
+                    r.QuestionID,
+                    r.OptionID,
+                    r.UserID,
+                    r.AnsweredAt
+                })
+                .ToListAsync();
+
+            return Ok(responses);
+        }
+        [HttpPost]
+        public async Task<IActionResult> LeaveSurvey(int surveyId, [FromHeader] string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID is required.");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var userResponses = await _context.Responses
+                .Where(r => r.SurveyID == surveyId && r.UserID == userId)
+                .ToListAsync();
+
+            if (userResponses == null || userResponses.Count == 0)
+            {
+                return NotFound("No responses found for the specified survey and user.");
+            }
+
+            _context.Responses.RemoveRange(userResponses);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+            return Ok("User has left the survey successfully.");
+        }
 
 
     }
