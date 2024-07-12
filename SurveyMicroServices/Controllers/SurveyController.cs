@@ -25,13 +25,13 @@ namespace SurveyMicroServices.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult<Survey>> CreateSurvey([FromBody]Survey survey /*string userId*/)
+        public async Task<ActionResult<Survey>> CreateSurvey([FromBody] Survey survey /*string userId*/)
         {
             //var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
             //if (userId == null) { 
-            
+
             //return Unauthorized();
-            
+
             //}
 
             //var user = await userManager.FindByIdAsync(userId);
@@ -61,10 +61,10 @@ namespace SurveyMicroServices.Controllers
             catch (DbUpdateException ex)
             {
                 return StatusCode(500, ex.Message);
-                
+
             }
 
-            return StatusCode(200,"Anket basariyla olusturuldu.");
+            return StatusCode(200, "Anket basariyla olusturuldu.");
         }
 
 
@@ -72,9 +72,9 @@ namespace SurveyMicroServices.Controllers
         public async Task<IActionResult> GetSurveyTitle()
         {
             var surveys = await _context.Surveys
-                .Where(s=>s.Status==true)
+                .Where(s => s.Status == true)
                 .Select(s => new { s.SurveyID, s.Title }).ToListAsync();
-            
+
             return Ok(surveys);
         }
 
@@ -87,12 +87,12 @@ namespace SurveyMicroServices.Controllers
                 return BadRequest("Başlık ismi girmek zorunlu!");
             }
 
-            var matchingSurveys= await _context.Surveys
-                .Where(s=> s.Title.Contains(title))
-                .Select(s=> new SurveyDto
+            var matchingSurveys = await _context.Surveys
+                .Where(s => s.Title.Contains(title))
+                .Select(s => new SurveyDto
                 {
-                    SurveyId=s.SurveyID,
-                    Title=s.Title,
+                    SurveyId = s.SurveyID,
+                    Title = s.Title,
                 })
                 .ToListAsync();
 
@@ -107,19 +107,19 @@ namespace SurveyMicroServices.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSurvey()
         {
-            var surveys=await _context.Surveys
+            var surveys = await _context.Surveys
                 .Where(s => s.Status == true)
-                .Select(s=> new SurveyDto
+                .Select(s => new SurveyDto
                 {
-                    SurveyId=s.SurveyID,
-                    Title=s.Title,
-                    Questions=s.Questions.Select(q=>new QuestionDto
+                    SurveyId = s.SurveyID,
+                    Title = s.Title,
+                    Questions = s.Questions.Select(q => new QuestionDto
                     {
-                        QuestionId=q.QuestionID,
-                        Text=q.Text,
-                        Options=q.Options.Select(o=>new OptionDto
+                        QuestionId = q.QuestionID,
+                        Text = q.Text,
+                        Options = q.Options.Select(o => new OptionDto
                         {
-                            OptionId=o.OptionID,
+                            OptionId = o.OptionID,
                             Text = o.Text
                         }).ToList()
                     }).ToList()
@@ -181,7 +181,7 @@ namespace SurveyMicroServices.Controllers
                             SurveyID = surveyId,
                             QuestionID = answer.QuestionId,
                             OptionID = option.OptionId,
-                            UserID = userId,
+                            UserID = new Guid(userId),
                             AnsweredAt = DateTime.UtcNow,
                             //AzureIntegration = false
                         };
@@ -211,7 +211,7 @@ namespace SurveyMicroServices.Controllers
         {
             if (userId is null)
                 return Unauthorized();
-            
+
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user is null)
@@ -220,7 +220,7 @@ namespace SurveyMicroServices.Controllers
             }
 
             var surveyTitles = await _context.Responses
-                  .Where(r => r.UserID == userId)
+                  .Where(r => r.UserID == new Guid(userId))
                   //Responses classında userid'yi doğruladı
                   .Join(_context.Surveys, //Surveys tablosuna girdi
                   response => response.SurveyID, //response içinden SurveyID aldı
@@ -243,7 +243,7 @@ namespace SurveyMicroServices.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeStatus(int surveyId)
         {
-            var survey=await _context.Surveys.FindAsync(surveyId);
+            var survey = await _context.Surveys.FindAsync(surveyId);
 
             if (survey is null)
             {
@@ -256,7 +256,7 @@ namespace SurveyMicroServices.Controllers
             await _context.SaveChangesAsync();
 
             return Ok("Anket durumu güncellendi");
-            
+
 
 
         }
@@ -267,20 +267,32 @@ namespace SurveyMicroServices.Controllers
             var responses = await _context.Responses
                 .Include(r => r.Question)
                     .ThenInclude(q => q.Options) // Include options related to the question
-                .Where(r => r.SurveyID == surveyId && r.UserID == userId)
-                .Select(r => new {
+                .Where(r => r.SurveyID == surveyId && r.UserID == new Guid(userId))
+                .Select(r => new
+                {
                     QuestionId = r.QuestionID,
                     QuestionText = r.Question.Text,
-                    Options = r.Question.Options.Select(o => new {
+                    Options = r.Question.Options.Select(o => new
+                    {
                         OptionId = o.OptionID,
                         OptionText = o.Text
-                    })
+                    }),
+                    UserResponse = new
+                    {
+                        ResponseId = r.ResponseID,
+                        SelectedOptionId = r.OptionID,
+                        SelectedOptionText = r.Question.Options
+                                            .Where(o => o.OptionID == r.OptionID)
+                                            .Select(o => o.Text)
+                                            .FirstOrDefault()
+                    }
                 })
                 .ToListAsync();
 
             var survey = await _context.Surveys
                 .Where(s => s.SurveyID == surveyId)
-                .Select(s => new {
+                .Select(s => new
+                {
                     s.SurveyID,
                     s.Title,
                     s.Description
@@ -302,11 +314,13 @@ namespace SurveyMicroServices.Controllers
         }
 
 
+
         [HttpGet]
         public async Task<IActionResult> GetResponses()
         {
             var responses = await _context.Responses
-                .Select(r => new {
+                .Select(r => new
+                {
                     r.ResponseID,
                     r.SurveyID,
                     r.QuestionID,
@@ -319,7 +333,7 @@ namespace SurveyMicroServices.Controllers
             return Ok(responses);
         }
         [HttpPost]
-        public async Task<IActionResult> LeaveSurvey(int surveyId, [FromHeader] string userId)
+        public async Task<IActionResult> LeaveSurvey(int surveyId, string userId)
         {
             if (string.IsNullOrEmpty(userId))
             {
@@ -332,9 +346,14 @@ namespace SurveyMicroServices.Controllers
                 return NotFound("User not found.");
             }
 
+            //var userResponses = await _context.Responses
+            //    .Where(r => r.SurveyID == surveyId && r.UserID == userId)
+            //    .ToListAsync();
+
             var userResponses = await _context.Responses
-                .Where(r => r.SurveyID == surveyId && r.UserID == userId)
-                .ToListAsync();
+               .Where(r => r.SurveyID == surveyId && r.UserID == new Guid(userId))
+               .ToListAsync();
+
 
             if (userResponses == null || userResponses.Count == 0)
             {
@@ -342,6 +361,7 @@ namespace SurveyMicroServices.Controllers
             }
 
             _context.Responses.RemoveRange(userResponses);
+           
 
             try
             {
@@ -354,6 +374,86 @@ namespace SurveyMicroServices.Controllers
 
             return Ok("User has left the survey successfully.");
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserResponsesForEdit(int surveyId, string userId)
+        {
+            var responses = await _context.Responses
+                .Include(r => r.Question)
+                    .ThenInclude(q => q.Options) // Include options related to the question
+                .Where(r => r.SurveyID == surveyId && r.UserID == new Guid(userId))
+                .Select(r => new
+                {
+                    QuestionId = r.QuestionID,
+                    QuestionText = r.Question.Text,
+                    Options = r.Question.Options.Select(o => new
+                    {
+                        OptionId = o.OptionID,
+                        OptionText = o.Text
+                    }),
+                    UserResponse = new
+                    {
+                        ResponseId = r.ResponseID,
+                        SelectedOptionId = r.OptionID
+                    }
+                })
+                .ToListAsync();
+
+            var survey = await _context.Surveys
+                .Where(s => s.SurveyID == surveyId)
+                .Select(s => new
+                {
+                    s.SurveyID,
+                    s.Title,
+                    s.Description
+                })
+                .FirstOrDefaultAsync();
+
+            if (survey == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new
+            {
+                survey.SurveyID,
+                survey.Title,
+                survey.Description,
+                Questions = responses
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateUserResponses([FromBody] UpdateUserResponsesRequest request)
+        {
+            foreach (var response in request.Responses)
+            {
+                var existingResponse = await _context.Responses
+                    .FirstOrDefaultAsync(r => r.SurveyID == request.SurveyId
+                                              && r.UserID == new Guid(request.UserId)
+                                              && r.QuestionID == response.QuestionId);
+
+                if (existingResponse != null)
+                {
+                    existingResponse.OptionID = response.SelectedOptionId;
+                    existingResponse.AnsweredAt = DateTime.UtcNow;
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        
+
+       
+
 
 
     }
