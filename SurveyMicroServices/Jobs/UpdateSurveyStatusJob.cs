@@ -25,6 +25,7 @@ public class UpdateSurveyStatusJob : IJob
             survey.Status = false;
         }
 
+
         await _context.SaveChangesAsync();
     }
 }
